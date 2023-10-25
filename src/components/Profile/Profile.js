@@ -4,13 +4,13 @@ import './Profile.css';
 import Header from "../Header/Header";
 
 
-function Profile({name, email, loggedIn}) {
+function Profile({name, email, loggedIn, width}) {
     function onSignOut() {
         loggedIn = false;
     }
   return (
     <>
-    <Header/>
+    <Header loggedIn widthWindow={width}/>
     <section className="profile">
       <p className="profile__header">Привет, {name}!</p>
       <form className="profile__form">

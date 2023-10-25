@@ -11,30 +11,35 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import NotFound from '../NotFound/NotFound';
 
 function App() {
+    const [windowWidth, setWindowSize] = React.useState(window.innerWidth);
   React.useEffect(() => {
+    window.onresize = () => {
+        setWindowSize(window.innerWidth)
+    }
     document.body.classList.add("body");
+    
   }, []);
   return (
     <CurrentUserContext.Provider>
     <Routes>
         <Route path="/"
         element={
-            <Main/>
+            <Main width={windowWidth}/>
         }
         />
         <Route path="/movies"
         element={
-            <Movies/>
+            <Movies  width={windowWidth}/>
         }
         />
         <Route path="/saved-movies"
         element={
-            <SavedMovies/>
+            <SavedMovies  width={windowWidth}/>
         }
         />
         <Route path="/profile"
         element={
-            <Profile name="Виталий" email="pochta@yandex.ru"/>
+            <Profile name="Виталий" email="pochta@yandex.ru"  width={windowWidth}/>
         }
         />
         <Route path="/signin"

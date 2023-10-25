@@ -8,7 +8,6 @@ function Login({ handleLogin }) {
       email: "",
       password: "",
     });
-  
     function onLogin(e) {
       e.preventDefault();
       if (!formValue.email || !formValue.password) {

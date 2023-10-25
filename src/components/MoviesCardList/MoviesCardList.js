@@ -18,18 +18,18 @@ function MoviesCardList(){
     <>
     <article className="elements">
         <ul className="elements__films">
-        <MoviesCard src={worlds} title={"33 слова о дизайне"}/>
-        <MoviesCard src={photo} title={"Киноальманах «100 лет дизайна»"}/>
-        <MoviesCard src={gitar} title={"В погоне за Бенкси"}/>
-        <MoviesCard src={pillars} title={"Баския: Взрыв реальности"}/>
-        <MoviesCard src={road} title={"Бег это свобода"}/>
-        <MoviesCard src={home} title={"Книготорговцы"}/>
-        <MoviesCard src={german} title={"Когда я думаю о Германии ночью"}/>
-        <MoviesCard src={graffite} title={"Gimme Danger: История Игги и The Stooges"}/>
-        <MoviesCard src={sport} title={"Дженис: Маленькая девочка грустит"}/>
-        <MoviesCard src={party} title={"Соберись перед прыжком"}/>
-        <MoviesCard src={smoke} title={"Пи Джей Харви: A dog called money"}/>
-        <MoviesCard src={computer} title={"По волнам: Искусство звука в кино"}/>
+        <MoviesCard src={worlds} title={"33 слова о дизайне"} saved={true}/>
+        <MoviesCard src={photo} title={"Киноальманах «100 лет дизайна»"} saved={true}/>
+        <MoviesCard src={gitar} title={"В погоне за Бенкси"} saved={true}/>
+        <MoviesCard src={pillars} title={"Баския: Взрыв реальности"} saved={true}/>
+        <MoviesCard src={road} title={"Бег это свобода"} saved={false}/>
+        <MoviesCard src={home} title={"Книготорговцы"} saved={false}/>
+        <MoviesCard src={german} title={"Когда я думаю о Германии ночью"} saved={false}/>
+        <MoviesCard src={graffite} title={"Gimme Danger: История Игги и The Stooges"} saved={true}/>
+        <MoviesCard src={sport} title={"Дженис: Маленькая девочка грустит"} saved={true}/>
+        <MoviesCard src={party} title={"Соберись перед прыжком"} saved={true}/>
+        <MoviesCard src={smoke} title={"Пи Джей Харви: A dog called money"} saved={true}/>
+        <MoviesCard src={computer} title={"По волнам: Искусство звука в кино"} saved={true}/>
         </ul>
         <button
           className="elements__more"

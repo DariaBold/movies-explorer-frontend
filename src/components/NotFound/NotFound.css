@@ -12,6 +12,23 @@
     font-size: 140px;
     font-weight: 400;
 }
+@media screen and (max-width: 1280px) {
+    .not-found__title {
+        margin-top: calc(411px + (250 - 411) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .not-found__title {
+        font-size: calc(80px + (140 - 80) * ((100vw - 320px) / (768 - 320)));
+        margin-top: calc(334px + (411 - 334) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .not-found__title {
+        font-size: 80px;
+        margin-top: 334px;
+    }
+}
 .not-found__text{
     margin: 0;
     padding: 0;
@@ -20,6 +37,19 @@
     font-weight: 400;
     margin-bottom: 183px;
 }
+@media screen and (max-width: 768px) {
+    .not-found__text {
+        margin-bottom: calc(282px + (183 - 282) * ((100vw - 320px) / (768 - 320)));
+        font-size: calc(12px + (16 - 12) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .not-found__text {
+        font-size: 12px;
+        margin-bottom: 282px;
+    }
+}
 .not-found__button{
     margin: 0;
     padding: 0;
@@ -27,4 +57,9 @@
     font-size: 14px;
     color: #4285F4;
     text-decoration: none;
+}
+@media screen and (max-width: 320px) {
+    .not-found__button {
+        font-size: 12px;
+    }
 }

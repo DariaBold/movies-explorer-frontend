@@ -4,7 +4,17 @@
     justify-content: center;
     padding-bottom: 30px;
 }
-
+@media screen and (max-width: 768px) {
+    .promo__links {
+        padding-bottom: calc(17px + (30 - 17) * ((100vw - 320px) / (768 - 320)));
+        margin: 0 17px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .promo__links {
+        padding-bottom: 17px;
+    }
+}
 .promo__link{
     background: #303030;
     max-width: 96px;
@@ -19,6 +29,22 @@
     padding: 11px 0;
     text-align: center;
     line-height: 16px;
+}
+.promo__link:hover{
+    opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+    .promo__link {
+        font-size: calc(10px + (12 - 10) * ((100vw - 320px) / (768 - 320)));
+        padding: calc(5px + (11 - 5) * ((100vw - 320px) / (768 - 320))) 0px;
+        margin-right: calc(5px + (10 - 5) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .promo__link {
+        font-size: 10px;
+        padding: 5px 0px;
+    }
 }
 .promo__link:last-child{
     margin-right: 0px;

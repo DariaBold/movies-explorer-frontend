@@ -18,6 +18,16 @@
     .header__logo {
         margin-left: calc(30px + (70 - 30) * ((100vw - 768px) / (1280 - 768)));
     }
+}
+@media screen and (max-width: 768px) {
+    .header__logo {
+        margin-left: calc(14px + (30 - 14) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .header__logo {
+        margin-left: 14px;
+    }
 } 
 .header__button{
     display: flex;
@@ -34,6 +44,19 @@
     align-self: center;
     text-decoration: none;
 }
+.button:hover{
+    opacity: 0.7;
+}
+@media screen and (max-width: 768px) {
+    .button {
+        font-size: calc(10px + (12 - 10) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .button {
+        font-size: 10px;
+    }
+}
 .button-green{
     max-width: 76px;
     width: 100%;
@@ -47,7 +70,15 @@
     .button-green {
         margin-right: calc(30px + (70 - 30) * ((100vw - 768px) / (1280 - 768)));
     }
-} 
+}
+@media screen and (max-width: 768px) {
+    .button-green {
+        margin-right: calc(14px + (30 - 14) * ((100vw - 320px) / (768 - 320)));
+        padding: 8px calc(12px + (20 - 12) * ((100vw - 320px) / (768 - 320)));
+        margin-top: 23px;
+        margin-left:  calc(15px + (30 - 15) * ((100vw - 320px) / (768 - 320)));;
+    }
+}
 .button__account{
     border-radius: 20px;
     background-color: #313131;
@@ -59,6 +90,16 @@
     text-align: center;
     text-decoration: none;
 }
+@media screen and (max-width: 768px) {
+    .button__account {
+        margin-top: 620px ;
+    }
+}
+@media screen and (max-width: 320px) {
+    .button__account {
+        margin-top: 440px ;
+    }
+} 
 .button__films{
     max-width: max-content;
     margin-left: 131px;
@@ -66,6 +107,27 @@
     font-size: 13px;
     text-decoration: none;
 }
+@media screen and (max-width: 768px) {
+    .button__films {
+        margin: 0 auto;
+        margin-top: 28px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .button__films {
+        margin-top: 24px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .button__films {
+        font-size: 18px;
+    }
+}
 .button__films-save{
     margin-left: 16px;
 }
+@media screen and (max-width: 768px) {
+    .button__films-save {
+        margin: 31px auto 0;
+    }
+} 

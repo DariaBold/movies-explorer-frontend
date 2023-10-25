@@ -3,11 +3,32 @@
     width: 100%;
     display: grid;
 }
+@media screen and (max-width: 1280px) {
+    .elements__card {
+        max-width: calc(339px + (360 - 339) * ((100vw - 768px) / (1280 - 768)));
+    }
+} 
 .elements__image{
     height: 201px;
     object-fit: cover;
     grid-row: 1/-1;
     grid-column: 1/-1;
+    width: 100%;
+}
+@media screen and (max-width: 1280px) {
+    .elements__image {
+        height: calc(190px + (201 - 190) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .elements__image {
+        height: calc(168px + (190 - 168) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements__image {
+        height: 168px;
+    }
 }
 .elements__save{
     font-family: "Inter", "Arial", sans-serif;
@@ -28,11 +49,49 @@
     height: 21px;
     display: none;
 }
+@media screen and (max-width: 320px) {
+    .elements__save{
+        display: block;
+    }
+}
+.elements__saved{
+    margin-top: 14px;
+    margin-right: 14px;
+    border: none;
+    grid-row: 2/-1;
+    grid-column: 2/-1;
+    justify-self: right;
+    height: 21px;
+    width: 21px;
+    background-image: url("../../images/save3.svg");
+    border-radius: 100%;
+}
+.elements__onSaved{
+    background-image: url("../../images/d3.svg");
+    cursor: pointer;
+    display: none;
+}
+@media screen and (max-width: 320px) {
+    .elements__onSaved{
+        display: block;
+    }
+}
+
+.elements__onSaved:hover{
+    display: block;
+}
 .elements__image:hover
 + .elements__save{
     display: block;
 }
-.elements__save:hover{
+.elements__image:hover 
++ .elements__onSaved{
+    display: block;
+}
+.elements__image:hover{
+    display: block;
+}
+.elements__save:hover + .elements__onSaved{
     display: block;
 }
 .elements__text{
@@ -42,12 +101,35 @@
     justify-content: space-between;
     margin: 14px;
 }
+@media screen and (max-width: 1280px) {
+    .elements__text {
+        margin: calc(25px + (14 - 25) * ((100vw - 768px) / (1280 - 768))) 
+        calc(0px + (14 - 0) * ((100vw - 768px) / (1280 - 768))) 
+        calc(0px + (14 - 0) * ((100vw - 768px) / (1280 - 768))) 
+        calc(0px + (14 - 0) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .elements__text {
+        margin: calc(16px + (25 - 16) * ((100vw - 320px) / (768 - 320))) 0px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements__text {
+        margin: 16px 0px 0px;
+    }
+} 
 .elements__title{
     font-size: 13px;
     font-weight: 500;
     color: white;
     margin: 0px;
     max-width: 250px;
+}
+@media screen and (max-width: 320px) {
+    .elements__title {
+        font-size: 12px;
+    }
 }
 .elements__counter{
     font-size: 11px;
@@ -59,3 +141,18 @@
     height: fit-content;
     margin-bottom: 43px;
 }
+@media screen and (max-width: 1280px) {
+    .elements__counter {
+        margin-bottom: calc(45px + (43 - 45) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .elements__counter {
+        margin-bottom: calc(36px + (45 - 36) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements__counter {
+        margin-bottom: 36px;
+    }
+} 

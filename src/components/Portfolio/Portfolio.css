@@ -8,15 +8,40 @@
         margin: calc(91px + (100 - 91) * ((100vw - 768px) / (1280 - 768))) calc(50px + (70 - 50) * ((100vw - 768px) / (1280 - 768))) calc(151px + (100 - 151) * ((100vw - 768px) / (1280 - 768)));
     }
 }
+@media screen and (max-width: 768px) {
+    .portfolio {
+        margin: calc(70px + (91 - 70) * ((100vw - 320px) / (768 - 320))) calc(14px + (50 - 14) * ((100vw - 320px) / (768 - 320))) 0px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .portfolio {
+        margin: 70px 14px 0px;
+    }
+}
 .portfolio__title{
     margin: 0px;
     color: #8B8B8B;
     font-size: 18px;
     font-weight: 400;
 }
+@media screen and (max-width: 768px) {
+    .portfolio__title {
+        font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .portfolio__title {
+        font-size: 14px;
+    }
+}
 .portfolio__links{
     margin: 0;
     margin-top: 57px;
+}
+@media screen and (max-width: 320px) {
+    .portfolio__links {
+        margin-top: 49px;
+    }
 }
 .portfolio__link{
     margin: 0;
@@ -26,9 +51,24 @@
     background-position: center;
     margin-top: 2px;
 }
+.portfolio__link:hover{
+    opacity: 0.7;
+}
 @media screen and (max-width: 1280px) {
     .portfolio__link {
         width: calc(27px + (29 - 27) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .portfolio__link {
+        width: calc(18px + (27 - 18) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .portfolio__link {
+        width: 18px;
+        background-image: url("../../images/point.svg");
+        margin-bottom: 10px;
     }
 }
 .portfolio__link-block{
@@ -44,6 +84,13 @@
         padding-bottom: calc(28px + (26 - 28) * ((100vw - 768px) / (1280 - 768)));
     }
 }
+@media screen and (max-width: 320px) {
+    .portfolio__link-block {
+        margin-top: 27px;
+        padding-bottom: 19px;
+        border-bottom: solid 1px #E6E6E6;
+    }
+}
 .portfolio__link-block:last-child{
     border-bottom: none;
 }
@@ -55,5 +102,15 @@
 @media screen and (max-width: 1280px) {
     .portfolio__link-paragraph {
         font-size: calc(28px + (30 - 28) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .portfolio__link-paragraph {
+        font-size: calc(18px + (28 - 18) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .portfolio__link-paragraph {
+        font-size: 18px;
     }
 }

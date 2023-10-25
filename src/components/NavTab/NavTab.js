@@ -2,13 +2,13 @@ import './NavTab.css';
 function NavTab(){
     return(
     <nav className="promo__links">
-    <a className="promo__link" href="#">
+    <a href="#about-project" className="promo__link">
       О проекте
     </a>
-    <a className="promo__link" href="#">
+    <a href="#technology" className="promo__link">
       Технологии
     </a>
-    <a className="promo__link" href="#">
+    <a href="#student" className="promo__link">
       Студент
     </a>
   </nav>
