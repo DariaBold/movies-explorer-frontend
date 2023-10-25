@@ -1,0 +1,61 @@
+.elements__card{
+    max-width: 360px;
+    width: 100%;
+    display: grid;
+}
+.elements__image{
+    height: 201px;
+    object-fit: cover;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+}
+.elements__save{
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 14px;
+    margin-right: 14px;
+    cursor: pointer;
+    border: none;
+    max-width: 72px;
+    width: 100%;
+    background-color: #313131;
+    grid-row: 2/-1;
+    grid-column: 2/-1;
+    justify-self: right;
+    color: white;
+    border-radius: 30px;
+    height: 21px;
+    display: none;
+}
+.elements__image:hover
++ .elements__save{
+    display: block;
+}
+.elements__save:hover{
+    display: block;
+}
+.elements__text{
+    font-family: "Inter", "Arial", sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 14px;
+}
+.elements__title{
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    margin: 0px;
+    max-width: 250px;
+}
+.elements__counter{
+    font-size: 11px;
+    font-weight: 400;
+    text-align: center;
+    color: #8B8B8B;
+    background-color: #2F2F2F;
+    padding: 3px 9px;
+    height: fit-content;
+    margin-bottom: 43px;
+}

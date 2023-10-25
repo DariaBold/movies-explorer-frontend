@@ -1,0 +1,25 @@
+.promo__links{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.promo__link{
+    background: #303030;
+    max-width: 96px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    font-family: "Inter", "Arial", sans-serif;
+    margin-right: 10px;
+    border-radius: 10px;
+    padding: 11px 0;
+    text-align: center;
+    line-height: 16px;
+}
+.promo__link:last-child{
+    margin-right: 0px;
+}

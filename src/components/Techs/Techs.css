@@ -1,0 +1,86 @@
+.technology{
+    color: white;
+    padding: 101px 70px 0px;
+    font-family: "Inter", "Arial", sans-serif;
+    background-color: #272727;
+    letter-spacing: -0.05em;
+}
+@media screen and (max-width: 1280px) {
+    .technology {
+        padding: calc(91px + (101 - 91) * ((100vw - 768px) / (1280 - 768))) calc(50px + (70 - 50) * ((100vw - 768px) / (1280 - 768))) 0;
+    }
+}
+.technology__block{
+    margin: 0 auto;
+    text-align: center;
+}
+.technology__list{
+    background-color: #303030;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    color: white;
+    border-radius: 10px;
+    max-width: 90px;
+    width: 100%;
+    padding-top: 21px;
+    padding-bottom: 22px;
+    list-style-type: none;
+}
+.technology__list:last-child{
+    margin-right: 0px;
+}
+.technology__lists{
+    margin: 0px;
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    padding-bottom: 100px;
+    margin-top: 101px;
+}
+@media screen and (max-width: 1280px) {
+    .technology__lists {
+        margin-top: calc(82px + (101 - 82) * ((100vw - 768px) / (1280 - 768)));
+        padding-bottom: calc(89px + (100 - 89) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 1280px) {
+    .technology__list {
+        max-width: calc(84px + (90 - 84) * ((100vw - 768px) / (1280 - 768)));
+        font-size: calc(12px + (14 - 12) * ((100vw - 768px) / (1280 - 768)));
+    }
+} 
+.technology__paragraph{
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 460px;
+    width: 100%;
+    margin: 27px auto 0;
+    letter-spacing: -0.037em;
+    line-height: 20px;
+}
+@media screen and (max-width: 1280px) {
+    .technology__paragraph {
+        font-size: calc(12px + (14 - 12) * ((100vw - 768px) / (1280 - 768)));
+        margin-top: calc(20px + (27 - 20) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+.technology__subtitle{
+    margin: 0;
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: 90px;
+    letter-spacing: -0.04em;
+}
+@media screen and (max-width: 1280px) {
+    .technology__subtitle {
+        margin-top: calc(81px + (90 - 81) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+.technology__title{
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: 23px;
+    border-bottom: solid 1px #DADADA;
+}

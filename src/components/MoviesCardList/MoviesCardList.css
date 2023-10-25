@@ -1,0 +1,29 @@
+.elements{
+    margin: 0 auto;
+}
+.elements__more{
+    border: 1px solid #424242;
+    border-radius: 6px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    max-width: 320px;
+    padding: 11px 0 9px;
+    width: 100%;
+    background-color: #202020;
+    color: white;
+    margin: 0 auto;
+    display: flex;
+    place-content: center;
+    margin-top: 20px;
+    margin-bottom: 160px;
+    cursor: pointer;
+}
+.elements__films{
+    margin-left: 70px;
+    padding: 0;
+    display: grid;
+    gap: 0px 29px;
+    grid-template-columns: repeat(auto-fit, 361px);
+}
