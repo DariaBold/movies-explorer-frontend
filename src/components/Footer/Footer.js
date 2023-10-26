@@ -10,12 +10,18 @@ function Footer(){
         <div className="footer__info">
           <p className="footer__copyright">© {date}</p>
           <nav className="footer__links">
-            <a className="footer__link" target="_blank" href="https://practicum.yandex.ru">
+            <ul className="footer__links-nav">
+              <li className="footer__link-yandex">
+              <a className="footer__link" target="_blank" href="https://practicum.yandex.ru">
               Яндекс.Практикум
             </a>
-            <a className="footer__link" target="_blank" href="https://github.com/DariaBold">
+              </li>
+              <li className="footer__link-git">
+              <a className="footer__link" target="_blank" href="https://github.com/DariaBold">
               Github
             </a>
+              </li>
+            </ul>
           </nav>
         </div>
       </footer>      

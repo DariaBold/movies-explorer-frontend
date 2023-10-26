@@ -1,3 +1,14 @@
 .elements__more-hidden{
     visibility: hidden;
+    margin-bottom: 210px;
+}
+@media screen and (max-width: 768px) {
+    .elements__more-hidden {
+        margin-bottom: calc(210px + (136 - 210) * ((100vw - 320px) / (768 - 320)))
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements__more-hidden {
+        margin-bottom: 136px;
+    }
 }

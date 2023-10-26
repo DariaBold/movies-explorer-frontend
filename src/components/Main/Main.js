@@ -8,7 +8,7 @@ import Techs from "../Techs/Techs";
 
 function Main({width}){
     return (
-        <>
+        <main>
         <Header widthWindow={width}/>
         <Promo/>
         <AboutProject/>
@@ -16,7 +16,7 @@ function Main({width}){
         <AboutMe/>
         <Portfolio/>
         <Footer/>
-        </>
+        </main>
 )
 }
 export default Main;

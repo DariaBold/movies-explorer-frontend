@@ -3,13 +3,17 @@
     width: 44px;
     height: 44px;
     border: none;
-    background-color: #202020;
     cursor: pointer;
     margin-top: 15px;
     margin-right: 30px;
     margin-bottom: 15px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: #202020;
 }
-
+.button__burger:hover{
+    opacity: 0.8;
+}
 @media screen and (max-width: 1280px) {
     .button__burger {
         margin-top: 15px;

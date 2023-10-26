@@ -4,3 +4,7 @@
     width: 100%;
     margin: 0 auto;
 }
+#root{
+  display: flex;
+  flex-direction: column;
+}

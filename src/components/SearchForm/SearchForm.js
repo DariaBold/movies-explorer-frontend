@@ -3,12 +3,12 @@ import './SearchForm.css';
 
 function SearchForm(){
     return(
-        <section className="search">
+        <div className="search">
             <form className="search-form">
                 <input className="search-form__input"  type='text' placeholder='Фильм'/>
-                <button className="search-form__submit"></button>
+                <button className="search-form__submit" type="submit"></button>
             </form>
             <FilterCheckbox/>
-        </section>
+        </div>
 )}
 export default SearchForm;

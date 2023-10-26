@@ -9,10 +9,10 @@ function Profile({name, email, loggedIn, width}) {
         loggedIn = false;
     }
   return (
-    <>
+    <main>
     <Header loggedIn widthWindow={width}/>
     <section className="profile">
-      <p className="profile__header">Привет, {name}!</p>
+      <h1 className="profile__header">Привет, {name}!</h1>
       <form className="profile__form">
         <label className="profile__form-name">Имя
         <input
@@ -20,7 +20,7 @@ function Profile({name, email, loggedIn, width}) {
           className="profile__input"
           id="name"
           name="name"
-          type="name"
+          type="text"
           value={name}
         />
         </label>
@@ -38,13 +38,13 @@ function Profile({name, email, loggedIn, width}) {
           Редактировать
           </button>
           <Link
-            to="/signin" className="profile__signout" onClick={onSignOut}> 
+            to="/" className="profile__signout" onClick={onSignOut}> 
               {" "}
               Выйти из аккаунта
             </Link>
       </form>
     </section>
-    </>
+    </main>
   );
 }
 

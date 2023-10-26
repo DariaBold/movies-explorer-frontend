@@ -24,9 +24,9 @@ function Login({ handleLogin }) {
       });
     };
     return (
-      <div className="login">
-        <div className="login__logo"></div>
-        <p className="login__header">Рады видеть!</p>
+      <main className="login">
+        <Link to="/"><div className="login__logo"></div></Link>
+        <h1 className="login__header">Рады видеть!</h1>
         <form onSubmit={onLogin} className="login__form">
         <label className="login__form-name">E-mail
           <input
@@ -67,7 +67,7 @@ function Login({ handleLogin }) {
           </p>
         </div>
         </form>
-      </div>
+      </main>
     );
   }
 

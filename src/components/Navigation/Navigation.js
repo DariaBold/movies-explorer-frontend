@@ -20,17 +20,17 @@ function Navigation({buttonClickOnBurger, onClose, widthWindow}){
         {(widthWindow>769) ? (
         <>
         <div className="header__button">
-            <Link to="/movies" className="button button__films">Фильмы</Link>
-            <Link to="/saved-movies" className="button button__films button__films-save">Сохранённые фильмы</Link>
+            <Link to="/movies" className="button button-films">Фильмы</Link>
+            <Link to="/saved-movies" className="button button-films button-films-save">Сохранённые фильмы</Link>
         </div>
-        <Link to="/profile" className="button button__account">Аккаунт</Link>
+        <Link to="/profile" className="button button-account">Аккаунт</Link>
         </>
         ) :
         (
-            <>
-            <button className={!isClicked ? "button__burger" : "button__burger button__burger-hide" } onClick={handleButtonClick}></button>
+            <div className="button">
+            <button className={!isClicked ? "button__burger" : "button__burger button__burger-hide" } onClick={handleButtonClick} type="button"></button>
             {isClicked && <HeaderBurger clickOnClose={handleClickOnClose} />}
-            </>
+            </div>
         )}
         </>
     )

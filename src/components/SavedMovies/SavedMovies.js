@@ -9,7 +9,7 @@ import './SavedMovies.css';
 function SavedMovies({width}){
     let count = 3;
     return(
-        <>
+        <main>
         <Header widthWindow={width}/>
         <SearchForm/>
         <article className="elements">
@@ -26,6 +26,6 @@ function SavedMovies({width}){
         >Еще</button>
         </article>
         <Footer/>
-        </>
+        </main>
 )}
 export default SavedMovies;

@@ -15,8 +15,7 @@ import computer from "../../images/computer.png"
 
 function MoviesCardList(){
     return (
-    <>
-    <article className="elements">
+    <section className="elements">
         <ul className="elements__films">
         <MoviesCard src={worlds} title={"33 слова о дизайне"} saved={true}/>
         <MoviesCard src={photo} title={"Киноальманах «100 лет дизайна»"} saved={true}/>
@@ -37,7 +36,6 @@ function MoviesCardList(){
           name="more"
           aria-label="Еще"
         >Еще</button>
-    </article>
-    </>
+    </section>
 )}
 export default MoviesCardList;

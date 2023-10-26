@@ -162,7 +162,7 @@
 }
 @media screen and (max-width: 768px) {
     .about-project__block {
-        margin-top: calc(61px + (14 - 61) * ((100vw - 320px) / (768 - 320)));
+        margin-top: calc(61px + (95 - 61) * ((100vw - 320px) / (768 - 320)));
     }
 }
 @media screen and (max-width: 320px) {
@@ -185,7 +185,7 @@
 @media screen and (max-width: 768px) {
     .about-project__backend {
         font-size: calc(11px + (14 - 11) * ((100vw - 320px) / (768 - 320)));
-        max-width: calc(140px + (100 - 140) * ((100vw - 320px) / (768 - 320)));
+        max-width: calc(100px + (140 - 100) * ((100vw - 320px) / (768 - 320)));
     }
 }
 @media screen and (max-width: 320px) {

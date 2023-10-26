@@ -1,20 +1,20 @@
-.search-form__short-films{
+.search-form{
     display: flex;
     justify-content: center;
     margin-top: 28px;
 }
 @media screen and (max-width: 1280px) {
-    .search-form__short-films {
+    .search-form {
         margin-top: calc(40px + (28 - 40) * ((100vw - 768px) / (1280 - 768)));
     }
 }
 @media screen and (max-width: 768px) {
-    .search-form__short-films {
+    .search-form {
         margin-top: calc(41px + (40 - 41) * ((100vw - 320px) / (768 - 320)));
     }
 }
 @media screen and (max-width: 320px) {
-    .search-form__short-films {
+    .search-form {
         margin-top: 41px;
     }
 }

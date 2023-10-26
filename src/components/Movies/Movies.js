@@ -5,12 +5,12 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 function Movies({width}){
     return (
-    <>
+    <main>
         <Header widthWindow={width}/>
         <SearchForm/>
         <MoviesCardList/>
         <Footer/>
-    </>
+    </main>
 
 )
 }

@@ -22,9 +22,9 @@ function Register({ register }) {
     });
   };
   return (
-    <section className="register">
-        <div className="register__logo"></div>
-      <p className="register__header">Добро пожаловать!</p>
+    <main className="register">
+      <Link to="/"><div className="register__logo"></div></Link>
+      <h1 className="register__header">Добро пожаловать!</h1>
       <form onSubmit={onRegister} className="register__form">
         <label className="register__form-name">Имя
       <input
@@ -32,7 +32,7 @@ function Register({ register }) {
           className="register__input"
           id="name"
           name="name"
-          type="name"
+          type="text"
           placeholder="Имя"
           onChange={handleChange}
           value={formValue.name}
@@ -77,7 +77,7 @@ function Register({ register }) {
           </p>
         </div>
       </form>
-    </section>
+    </main>
   );
 }
 

@@ -76,7 +76,6 @@
         display: block;
     }
 }
-
 .elements__onSaved:hover{
     display: block;
 }
@@ -89,6 +88,7 @@
     display: block;
 }
 .elements__image:hover{
+    cursor: pointer;
     display: block;
 }
 .elements__save:hover + .elements__onSaved{
@@ -111,7 +111,7 @@
 }
 @media screen and (max-width: 768px) {
     .elements__text {
-        margin: calc(16px + (25 - 16) * ((100vw - 320px) / (768 - 320))) 0px;
+        margin: calc(16px + (25 - 16) * ((100vw - 320px) / (768 - 320))) 0px 0px;
     }
 }
 @media screen and (max-width: 320px) {

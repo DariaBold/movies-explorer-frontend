@@ -2,8 +2,7 @@ import './MoviesCard.css';
 
 function MoviesCard({src, title, saved, onSaved}){
   return (
-  <>
-    <article className="elements__card">
+    <li className="elements__card">
       <img
         className="elements__image"
         alt="33 слова о дизайне"
@@ -38,7 +37,6 @@ function MoviesCard({src, title, saved, onSaved}){
         <h2 className="elements__title">{title}</h2>
         <span className="elements__counter">1ч 17м</span>
       </div>
-    </article>
-    </>
+    </li>
 )}
 export default MoviesCard;
