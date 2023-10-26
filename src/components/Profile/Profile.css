@@ -83,7 +83,11 @@
     text-align: right;
     padding: 0;
 }
-
+.profile__input:focus{
+    outline: 1px solid #666;
+    background-color: #3d3d3d;
+    border-radius: 3px;
+}
 .profile__signout{
     font-family: "Inter", "Arial", sans-serif;
     text-decoration: none;
