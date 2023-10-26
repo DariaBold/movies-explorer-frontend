@@ -30,7 +30,7 @@ function Login({ handleLogin }) {
         <form onSubmit={onLogin} className="login__form">
         <label className="login__form-name">E-mail
           <input
-            required=""
+            required
             className="login__input"
             id="email"
             name="email"
@@ -42,11 +42,13 @@ function Login({ handleLogin }) {
           </label>
         <label className="login__form-name">Пароль
           <input
-            required=""
+            required
             id="password"
             className="login__input"
             name="password"
             type="password"
+            minLength="8"
+            maxLength="30"
             placeholder="Пароль"
             onChange={handleChange}
             value={formValue.password}

@@ -5,7 +5,7 @@ function SearchForm(){
     return(
         <div className="search">
             <form className="search-form">
-                <input className="search-form__input"  type='text' placeholder='Фильм'/>
+                <input className="search-form__input"  type='text' placeholder='Фильм' required/>
                 <button className="search-form__submit" type="submit"></button>
             </form>
             <FilterCheckbox/>

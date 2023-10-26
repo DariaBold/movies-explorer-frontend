@@ -34,13 +34,15 @@ function Register({ register }) {
           name="name"
           type="text"
           placeholder="Имя"
+          minLength="2"
+          maxLength="30"
           onChange={handleChange}
           value={formValue.name}
         />
         </label>
         <label className="register__form-name">E-mail
         <input
-          required=""
+          required
           className="register__input"
           id="email"
           name="email"
@@ -52,12 +54,14 @@ function Register({ register }) {
         </label>
         <label className="register__form-name">Пароль
         <input
-          required=""
+          required
           id="password"
           className="register__input"
           name="password"
           type="password"
           placeholder="Пароль"
+          minLength="8"
+          maxLength="30"
           onChange={handleChange}
           value={formValue.password}
         />

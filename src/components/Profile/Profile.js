@@ -16,21 +16,25 @@ function Profile({name, email, loggedIn, width}) {
       <form className="profile__form">
         <label className="profile__form-name">Имя
         <input
-          required=""
+          required
           className="profile__input"
           id="name"
           name="name"
           type="text"
+          placeholder="Имя"
+          minLength="2"
+          maxLength="30"
           value={name}
         />
         </label>
         <label className="profile__form-name">E-mail
         <input
-          required=""
+          required
           className="profile__input"
           id="email"
           name="email"
           type="email"
+          placeholder="Email"
           value={email}
         />
         </label>

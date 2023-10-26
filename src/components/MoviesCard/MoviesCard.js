@@ -5,7 +5,7 @@ function MoviesCard({src, title, saved, onSaved}){
     <li className="elements__card">
       <img
         className="elements__image"
-        alt="33 слова о дизайне"
+        alt={title}
         src={src}
       />
       {saved&&!onSaved ?
