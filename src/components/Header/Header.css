@@ -14,7 +14,7 @@
     margin-left: 70px;
 }
 .header__logo:hover{
-    opacity: 0.7;
+    opacity: 0.8;
 }
 @media screen and (max-width: 1280px) {
     .header__logo {
@@ -94,6 +94,9 @@
     text-align: center;
     text-decoration: none;
 }
+.button-account:hover{
+    opacity: 0.8;
+}
 @media screen and (max-width: 768px) {
     .button-account {
         margin: 0;
@@ -113,6 +116,9 @@
     padding: 0;
     font-size: 13px;
     text-decoration: none;
+}
+.button-films:hover{
+    opacity: 0.7;
 }
 @media screen and (max-width: 768px) {
     .button-films {
