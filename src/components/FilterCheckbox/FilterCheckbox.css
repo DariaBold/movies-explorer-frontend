@@ -1,0 +1,49 @@
+.search-form{
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+@media screen and (max-width: 1280px) {
+    .search-form {
+        margin-top: calc(40px + (28 - 40) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .search-form {
+        margin-top: calc(41px + (40 - 41) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .search-form {
+        margin-top: 41px;
+    }
+}
+
+.search-form__short-films-label{
+    width: 36px; 
+    height: 20px; 
+    display: block;
+    position: relative;
+}
+.search-form__short-films-input{
+    margin: 0px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
+    margin-left: 12px;
+    margin-top: 3px;
+}
+.search-form__checkbox{
+    visibility: hidden;
+}
+.search-form__checkbox + span {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: url("../../images/smalltumboff.svg") no-repeat; 
+    cursor: pointer;
+}
+.search-form__checkbox:checked + span  	{
+    background: url("../../images/tumbler-on.svg") no-repeat;
+   }

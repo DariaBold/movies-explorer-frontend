@@ -1,0 +1,10 @@
+.body{
+  background-color: #202020;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+}

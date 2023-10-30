@@ -1,0 +1,166 @@
+.technology{
+    color: white;
+    padding: 101px 70px 0px;
+    font-family: "Inter", "Arial", sans-serif;
+    background-color: #272727;
+    letter-spacing: -0.05em;
+}
+@media screen and (max-width: 1280px) {
+    .technology {
+        padding: calc(91px + (101 - 91) * ((100vw - 768px) / (1280 - 768))) calc(50px + (70 - 50) * ((100vw - 768px) / (1280 - 768))) 0;
+    }
+}
+@media screen and (max-width: 768px) {
+    .technology {
+        padding: calc(70px + (91 - 70) * ((100vw - 320px) / (768 - 320))) calc(18px + (50 - 18) * ((100vw - 320px) / (768 - 320))) 0px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology {
+        padding: 70px 18px 0px;
+        background-color: #202020;
+    }
+}
+.technology__block{
+    margin: 0 auto;
+    text-align: center;
+}
+.technology__list{
+    background-color: #303030;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    color: white;
+    border-radius: 10px;
+    max-width: 90px;
+    width: 100%;
+    padding-top: 21px;
+    padding-bottom: 22px;
+    list-style-type: none;
+}
+.technology__list:last-child{
+    margin-right: 0px;
+}
+@media screen and (max-width: 1280px) {
+    .technology__list {
+        max-width: calc(84px + (90 - 84) * ((100vw - 768px) / (1280 - 768)));
+        font-size: calc(12px + (14 - 12) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .technology__list {
+        margin-top: 10px;
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology__list {
+        margin-top: 10px;
+        max-width: 84px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology__list:nth-child(2n) {
+        margin-right: 0px;
+    }
+}
+.technology__lists{
+    margin: 0px;
+    display: flex;
+    padding: 0px;
+    justify-content: center;
+    padding-bottom: 100px;
+    margin-top: 101px;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 1280px) {
+    .technology__lists {
+        margin-top: calc(82px + (101 - 82) * ((100vw - 768px) / (1280 - 768)));
+        padding-bottom: calc(89px + (100 - 89) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .technology__lists {
+        margin-top:72px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology__lists {
+        max-width: 198px;
+        flex-wrap: wrap;
+        margin: 42px auto 0;
+        place-content: start;
+        margin-left: 53px;
+    }
+}
+.technology__paragraph{
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 460px;
+    width: 100%;
+    margin: 27px auto 0;
+    letter-spacing: -0.037em;
+    line-height: 20px;
+}
+@media screen and (max-width: 1280px) {
+    .technology__paragraph {
+        font-size: calc(12px + (14 - 12) * ((100vw - 768px) / (1280 - 768)));
+        margin-top: calc(20px + (27 - 20) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .technology__paragraph {
+        margin-top: calc(24px + (20 - 24) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology__paragraph {
+        font-size: 11px;
+        margin-top: 24px;
+        line-height: 16px;
+    }
+}
+.technology__subtitle{
+    margin: 0;
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: 90px;
+    letter-spacing: -0.04em;
+}
+@media screen and (max-width: 1280px) {
+    .technology__subtitle {
+        margin-top: calc(81px + (90 - 81) * ((100vw - 768px) / (1280 - 768)));
+    }
+}
+@media screen and (max-width: 768px) {
+    .technology__subtitle {
+        font-size: calc(30px + (50 - 30) * ((100vw - 320px) / (768 - 320)));
+        margin-top: calc(61px + (81 - 61) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology__subtitle {
+        margin-top: 61px;
+        font-size: 30px;
+    }
+}
+.technology__title{
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: 23px;
+    border-bottom: solid 1px #DADADA;
+}
+@media screen and (max-width: 768px) {
+    .technology__title {
+        font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (768 - 320)));
+        padding-bottom: calc(26px + (23 - 26) * ((100vw - 320px) / (768 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .technology__title {
+        font-size: 18px;
+        border-bottom: solid 1px black;
+        padding-bottom: 26px;
+    }
+}

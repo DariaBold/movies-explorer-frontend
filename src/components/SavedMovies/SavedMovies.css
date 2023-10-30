@@ -1,0 +1,19 @@
+.elements__more-hidden{
+    visibility: hidden;
+    margin-bottom: 210px;
+}
+@media screen and (max-width: 1280px) {
+    .elements__more-hidden {
+        margin-bottom: calc(160px + (210 - 160) * ((100vw - 768px) / (1280 - 768)))
+    }
+}
+@media screen and (max-width: 768px) {
+    .elements__more-hidden {
+        margin-bottom: calc(136px + (160 - 136) * ((100vw - 320px) / (768 - 320)))
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements__more-hidden {
+        margin-bottom: 136px;
+    }
+}
