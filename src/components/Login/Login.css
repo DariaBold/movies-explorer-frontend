@@ -123,6 +123,9 @@
     border: none;
     color: white;
 }
+.login__link_disabled{
+    background-color: #8B8B8B;
+}
 .login__link:hover{
     opacity: 0.8;
 }

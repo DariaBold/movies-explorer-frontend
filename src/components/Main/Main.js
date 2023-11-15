@@ -6,17 +6,17 @@ import Portfolio from "../Portfolio/Portfolio";
 import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 
-function Main({width}){
-    return (
-        <main>
-        <Header widthWindow={width}/>
-        <Promo/>
-        <AboutProject/>
-        <Techs/>
-        <AboutMe/>
-        <Portfolio/>
-        <Footer/>
-        </main>
-)
+function Main({ width, loggedIn }) {
+  return (
+    <main>
+      <Header loggedIn={loggedIn} widthWindow={width} />
+      <Promo />
+      <AboutProject />
+      <Techs />
+      <AboutMe />
+      <Portfolio />
+      <Footer />
+    </main>
+  );
 }
 export default Main;

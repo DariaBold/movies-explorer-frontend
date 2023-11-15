@@ -138,3 +138,31 @@
         margin-top: 365px;
     }
 }
+.profile__edit{
+    background-color: #3456F3;
+    color: white;
+    height: 45px;
+    border: none;
+    border-radius: 3px;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.profile__edit_disabled{
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+}
+.profile__edit:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.profile__edit-error{
+    color: #FF004C;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 189px;
+    height: 14px;
+}

@@ -17,3 +17,10 @@
         margin-bottom: 136px;
     }
 }
+.elements__films-no{
+    color: white;
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
