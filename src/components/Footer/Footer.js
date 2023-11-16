@@ -1,7 +1,7 @@
+import { date } from "../../utils/constants";
 import "./Footer.css";
 
 function Footer() {
-  const date = new Date(Date.now()).getFullYear();
   return (
     <footer className="footer">
       <p className="footer__paragraph">

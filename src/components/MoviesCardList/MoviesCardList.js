@@ -5,12 +5,18 @@ import "../SavedMovies/SavedMovies.css";
 
 function MoviesCardList({ movies, saved, onCardLike, onCardDelete }) {
   const [isOpenMovies, setIsOpenMovies] = React.useState(0);
+  const [savedMoviesData, setSavedMoviesData] = React.useState(movies);
   const [count, setCount] = React.useState(() => {});
+  useEffect(() => {
+    if((movies.length > 0) && (savedMoviesData.length === 0)){
+      setSavedMoviesData(movies);
+    }
+  }, [movies, savedMoviesData.length]);
   function firstCount() {
-    if (window.innerWidth > 1280) {
+    if (window.innerWidth > 1137) {
       setIsOpenMovies(3);
       setCount(12);
-    } else if (window.innerWidth < 800 && 713 < window.innerWidth) {
+    } else if (window.innerWidth < 1138 && 713 < window.innerWidth) {
       setIsOpenMovies(2);
       setCount(8);
     } else if (window.innerWidth < 713) {
@@ -18,23 +24,29 @@ function MoviesCardList({ movies, saved, onCardLike, onCardDelete }) {
       setCount(5);
     }
   }
-
+  function handleDeleteMovie(id) {
+    onCardDelete(id);
+    setSavedMoviesData(moviesData => moviesData.filter(movieData => movieData.id !== id))
+  }
   function handleClickMore() {
-    if (window.innerWidth > 1280) {
+    if (window.innerWidth > 1137) {
       setCount(count + isOpenMovies);
-    } else if (window.innerWidth < 800 && 713 < window.innerWidth) {
+    } else if (window.innerWidth < 1138 && 713 < window.innerWidth) {
       setCount(count + isOpenMovies);
     } else if (window.innerWidth < 713) {
       setCount(count + isOpenMovies);
     }
   }
   useEffect(() => {
+    setTimeout(() => {
     firstCount();
-  }, []);
+    },500)
+  }, [window.innerWidth]);
   useEffect(() => {
     window.addEventListener("resize", handleClickMore);
     return () => window.removeEventListener("resize", handleClickMore);
   });
+
   return (
     <section className="elements">
       {movies.length === 0 ? (
@@ -50,7 +62,7 @@ function MoviesCardList({ movies, saved, onCardLike, onCardDelete }) {
                   key={info.id}
                   saved={saved}
                   onCardLike={onCardLike}
-                  onCardDelete={onCardDelete}
+                  onCardDelete={handleDeleteMovie}
                   info={info}
                 />
               );

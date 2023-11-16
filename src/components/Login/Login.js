@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import "./Login.css";
 import { useForm } from "../../hooks/useForm";
 
-function Login({ handleLogin }) {
+function Login({ handleLogin, fail, onChangeClose, isLoading }) {
   const { values, handleChange, errors, isValid, resetForm } = useForm();
   function onLogin(e) {
     e.preventDefault();
     handleLogin(values.email, values.password);
   }
-
   useEffect(() => {
     resetForm();
   }, [resetForm]);
@@ -19,7 +18,7 @@ function Login({ handleLogin }) {
         <div className="login__logo"></div>
       </Link>
       <h1 className="login__header">Рады видеть!</h1>
-      <form onSubmit={onLogin} className="login__form">
+      <form onSubmit={onLogin} className="login__form" onChange={onChangeClose}>
         <label className="login__form-name">
           E-mail
           <input
@@ -33,6 +32,7 @@ function Login({ handleLogin }) {
             value={values.email || ""}
           />
         </label>
+        <span name="email" className={errors.email ? "login__span" : "login__span login__span-hidden"}>{errors.email}</span>
         <label className="login__form-name">
           Пароль
           <input
@@ -48,10 +48,15 @@ function Login({ handleLogin }) {
             value={values.password || ""}
           />
         </label>
+        <span name="password" 
+        className={errors.password ? "login__span" : "login__span login__span-hidden"}>
+          {errors.password || (fail && 'Что-то пошло не так...')}
+          </span>
         <div className="login__button-container">
           <button
             type="submit"
             className={`login__link ${!isValid && "login__link_disabled"}`}
+            disabled={isLoading ? "disabled" : ""}
           >
             Войти
           </button>

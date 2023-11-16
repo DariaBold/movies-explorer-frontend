@@ -35,8 +35,8 @@ function MoviesCard({ saved, onCardLike, onCardDelete, info }) {
           className="elements__image"
           alt={info.nameRU}
           src={
-            pathname === "/movies"
-              ? `https://api.nomoreparties.co/${info.image.url}`
+            info.image?.url
+              ? `https://api.nomoreparties.co/${info.image?.url}`
               : info.image
           }
         />

@@ -1,5 +1,5 @@
-export const BASE_URL = "https://api.movies.daria.nomoredomainsrocks.ru";
-// export const BASE_URL = "http://localhost:3000";
+// export const BASE_URL = "https://api.movies.daria.nomoredomainsrocks.ru";
+export const BASE_URL = "http://localhost:3000";
 
 function getResponseData(res) {
   if (!res.ok) {
@@ -66,6 +66,12 @@ export function getMovies(token) {
   }).then((res) => getResponseData(res));
 }
 export const addMovie = (info, token) => {
+  const image = info.image?.url
+  ? `https://api.nomoreparties.co/${info.image?.url}`
+  : info.image
+  const thumbnail = info.image?.formats?.thumbnail?.url
+  ? `https://api.nomoreparties.co/${info.image?.formats?.thumbnail?.url}`
+  : info.thumbnail
   return fetch(`${BASE_URL}/movies`, {
     method: "POST",
     headers: {
@@ -78,9 +84,9 @@ export const addMovie = (info, token) => {
       duration: info.duration,
       year: info.year,
       description: info.description,
-      image: `https://api.nomoreparties.co${info.image.url}`,
+      image,
       trailerLink: info.trailerLink,
-      thumbnail: `https://api.nomoreparties.co${info.image.formats.thumbnail.url}`,
+      thumbnail,
       movieId: info.id,
       nameRU: info.nameRU,
       nameEN: info.nameEN,

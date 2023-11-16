@@ -2,8 +2,10 @@ import React from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
+
 function SearchForm({ handleCheckbox, isChecked, search }) {
-  const [filterWords, setFilterWords] = React.useState("");
+  const [filterWords, setFilterWords] = React.useState('');
+
   function handleSubmit(e) {
     e.preventDefault();
     search(filterWords);
@@ -18,7 +20,8 @@ function SearchForm({ handleCheckbox, isChecked, search }) {
           className="search-form__input"
           type="text"
           placeholder="Фильм"
-          value={filterWords || ""}
+          name="search"
+          value={filterWords ? filterWords : ''}
           required
           onChange={handleFilter}
         />

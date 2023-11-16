@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import isEmail from "validator/es/lib/isEmail";
+import { pattern_email } from "../utils/constants";
 
 export function useForm() {
   const [values, setValues] = React.useState({});
@@ -16,7 +17,7 @@ export function useForm() {
       target.setCustomValidity("");
     }
     if (name === "email") {
-      if (!isEmail(value)) {
+      if (!isEmail(value) || !(value.match(pattern_email))) {
         target.setCustomValidity("Некорректный email");
       } else {
         target.setCustomValidity("");

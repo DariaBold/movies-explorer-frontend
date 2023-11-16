@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 import Header from "../Header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { regexpProfile } from "../../utils/constants";
 
-function Profile({ loggedIn, width, onUpdateUser, onSignOut }) {
+function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -16,8 +17,8 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut }) {
 
   function handleChangeEmail(e) {
     setEmail(e.target.value);
-    const regexp = /^([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)?$/;
-    if (regexp.test(e.target.value)) {
+    
+    if (regexpProfile.test(e.target.value)) {
       setIsValidEmail(true);
       setErrorEmail("");
     } else {
@@ -51,8 +52,6 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut }) {
     setName(currentUser.name);
     setEmail(currentUser.email);
   }, [currentUser]);
-  console.log(`isValidName=${isValidName}`);
-  console.log(`isValidEmail=${isValidEmail}`);
   return (
     <main>
       <Header loggedIn={loggedIn} widthWindow={width} />
@@ -86,7 +85,7 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut }) {
               placeholder="Email"
               value={email}
               onChange={handleChangeEmail}
-              disabled={!edit ? "disabled" : ""}
+              disabled={!edit || isLoading ? "disabled" : ""}
             />
           </label>
           {!edit ? (
@@ -113,7 +112,7 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut }) {
                 className={`profile__edit ${
                   !(isValidEmail && isValidName) ? "profile__edit_disabled" : ""
                 }`}
-                disabled={`${!(isValidEmail && isValidName) ? "disabled" : ""}`}
+                disabled={`${!(isValidEmail && isValidName) || isLoading ? "disabled" : ""}`}
               >
                 Сохранить
               </button>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Profile from "../Profile/Profile";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -26,7 +26,10 @@ function App() {
   const [isCheck, setIsCheck] = React.useState(true);
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const [fail, setFail] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
+  const pathname = useLocation();
   React.useEffect(() => {
     if (loggedIn) {
       Promise.all([
@@ -38,39 +41,56 @@ function App() {
           setSavedMovies(infoMovie.reverse());
           setIsCheck(false);
         })
-        .catch((error) =>
-          console.error(`Ошибка получения информации ${error}`)
+        .catch((error) =>{
+          console.error(`Ошибка получения информации ${error}`);
+          localStorage.clear();
+        }
         );
     } else {
       setIsCheck(false);
     }
   }, [loggedIn]);
   function handleLogin(email, password) {
+    setIsLoading(true);
     api
       .authorize(email, password)
       .then((data) => {
         localStorage.setItem("jwt", data.token);
         setLoggedIn(true);
         setIsCheck(false);
-        navigate("/", { replace: true });
+        navigate("/movies", { replace: true });
       })
       .catch((err) => {
+        setFail(true);
         console.log(err);
-      });
+      })
+      .finally(()=>{
+        setIsLoading(false)
+      })
   }
 
   function handleRegister(name, email, password) {
+    setIsLoading(true);
     api
       .registration(name, email, password)
       .then((data) => {
-        console.log(data);
-        navigate("/signin", { replace: true });
+        handleLogin(email, password)
       })
       .catch((err) => {
+        if(err.includes("409")){
+          setFail(true);
+        }
         console.log(err);
-      });
+      })
+      .finally(()=>{
+        setIsLoading(false)
+      })
+  }
+  function handleClose(){
+    setFail(false)
   }
   function handleUpdateUser(props) {
+    setIsLoading(true);
     api
       .setUserInfo(props, localStorage.getItem("jwt"))
       .then((res) => {
@@ -78,7 +98,10 @@ function App() {
       })
       .catch((error) =>
         console.error(`Ошибка редактирования профиля ${error}`)
-      );
+      )
+      .finally(()=>{
+        setIsLoading(false)
+      })
   }
   function handleOnSignOut() {
     localStorage.removeItem("jwt");
@@ -96,7 +119,6 @@ function App() {
     if (isLiked) {
       handleCardDelete(clickMovie[0]._id);
     } else {
-      console.log(data);
       api
         .addMovie(data, localStorage.getItem("jwt"))
         .then((newMovie) => setSavedMovies([newMovie, ...savedMovies]))
@@ -115,6 +137,7 @@ function App() {
       })
       .catch((error) => console.error(`Ошибка удаления лайка ${error}`));
   }
+  
   React.useEffect(() => {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
@@ -124,7 +147,7 @@ function App() {
           if (res) {
             setLoggedIn(true);
             setIsCheck(false);
-            navigate("/", { replace: true });
+            navigate(pathname, { replace: true });
           }
         })
         .catch((err) => {
@@ -180,16 +203,17 @@ function App() {
                   loggedIn={loggedIn}
                   onUpdateUser={handleUpdateUser}
                   onSignOut={handleOnSignOut}
+                  isLoading={isLoading}
                 />
               }
             />
             <Route
               path="/signin"
-              element={<Login loggedIn={loggedIn} handleLogin={handleLogin} />}
+              element={<Login handleLogin={handleLogin} fail={fail} onChangeClose={handleClose} isLoading={isLoading}/>}
             />
             <Route
               path="/signup"
-              element={<Register register={handleRegister} />}
+              element={<Register register={handleRegister} fail={fail} onClose={handleClose} isLoading={isLoading}/>}
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

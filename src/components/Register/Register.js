@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import { useForm } from "../../hooks/useForm";
 
-function Register({ register }) {
+function Register({ register, fail, onClose, isLoading }) {
   const { values, handleChange, errors, isValid, resetForm } = useForm();
-
   function onRegister(e) {
     e.preventDefault();
     register(values.name, values.email, values.password);
@@ -14,6 +13,7 @@ function Register({ register }) {
     resetForm();
   }, [resetForm]);
   return (
+    <>
     <main className="register">
       <Link to="/">
         <div className="register__logo"></div>
@@ -35,6 +35,7 @@ function Register({ register }) {
             value={values.name || ""}
           />
         </label>
+        <span name="name" className={errors.name ? "register__span" : "register__span register__span-hidden"}>{errors.name}</span>
         <label className="register__form-name">
           E-mail
           <input
@@ -48,6 +49,7 @@ function Register({ register }) {
             value={values.email || ""}
           />
         </label>
+        <span name="email" className={errors.email ? "register__span" : "register__span register__span-hidden"}>{errors.email}</span>
         <label className="register__form-name">
           Пароль
           <input
@@ -63,12 +65,14 @@ function Register({ register }) {
             value={values.password || ""}
           />
         </label>
+        <span name="password" className={errors.password ? "register__span" : "register__span register__span-hidden"}>{errors.password}</span>
         <div className="register__button-container">
           <button
             type="submit"
             className={`register__link ${
               !isValid && "register__link_disabled"
             }`}
+            disabled={isLoading ? "disabled" : ""}
           >
             Зарегистрироваться
           </button>
@@ -84,6 +88,18 @@ function Register({ register }) {
         </div>
       </form>
     </main>
+    {fail&&(
+      <div className="register__container">
+        <button
+          className="register__close"
+          type="button"
+          aria-label="Закрыть"
+          onClick={onClose}
+        />
+        <div className="register__fail">Email уже зарегистрирован</div>
+      </div>
+    )}
+    </>
   );
 }
 

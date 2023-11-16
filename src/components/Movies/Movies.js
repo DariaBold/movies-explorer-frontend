@@ -53,7 +53,6 @@ function Movies({ width, loggedIn, savedMovies, onCardLike, onCardDelete }) {
       setIsChecked(false);
       filterMoviesByWord(allMovies, inputSearch, false);
     }
-    console.log(isChecked);
   }
   useEffect(() => {
     if (

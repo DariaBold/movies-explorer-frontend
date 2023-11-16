@@ -7,14 +7,13 @@ import "./SavedMovies.css";
 import Preloader from "../Preloader/Preloader";
 
 function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
+  
   const [filterMovies, setFilterMovies] = React.useState(savedMovies);
   const [inputSearch, setInputSearch] = React.useState("");
   const [isChecked, setIsChecked] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+
   function filterMoviesByWord(movies, inputWords, isChecked) {
-    localStorage.setItem("allmovies", JSON.stringify(movies));
-    localStorage.setItem("inputwords", JSON.stringify(inputWords));
-    localStorage.setItem("short", JSON.stringify(isChecked));
     setInputSearch(inputWords);
     setFilterMovies(
       movies.filter((movie) => {
@@ -39,6 +38,17 @@ function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
   function search(inputWords) {
     filterMoviesByWord(savedMovies, inputWords, isChecked);
   }
+  function handleDeleteMovie(id) {
+    onCardDelete(id);
+    setFilterMovies(moviesData => moviesData.filter(movieData => movieData._id !== id))
+  }
+  useEffect(()=>{
+    if(savedMovies.length !== 0){
+      setIsLoading(true)
+      setFilterMovies(savedMovies);
+    }
+    setIsLoading(false)
+  },[savedMovies])
   return (
     <main>
       {isLoading ? (
@@ -58,7 +68,7 @@ function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
                   <MoviesCard
                     key={info._id}
                     onSaved={true}
-                    onCardDelete={onCardDelete}
+                    onCardDelete={handleDeleteMovie}
                     saved={savedMovies}
                     info={info}
                   />
