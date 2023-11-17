@@ -27,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [fail, setFail] = React.useState(false);
+  const [othersFail, setOthersFail] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
   const pathname = useLocation();
@@ -62,7 +63,7 @@ function App() {
       })
       .catch((err) => {
         setFail(true);
-        console.log(err);
+        console.error(`Ошибка входа ${err}`);
       })
       .finally(()=>{
         setIsLoading(false)
@@ -79,8 +80,10 @@ function App() {
       .catch((err) => {
         if(err.includes("409")){
           setFail(true);
+        } else {
+          setOthersFail(true)
         }
-        console.log(err);
+        console.error(`Ошибка регистрации ${err}`);
       })
       .finally(()=>{
         setIsLoading(false)
@@ -88,6 +91,7 @@ function App() {
   }
   function handleClose(){
     setFail(false)
+    setOthersFail(false)
   }
   function handleUpdateUser(props) {
     setIsLoading(true);
@@ -213,7 +217,8 @@ function App() {
             />
             <Route
               path="/signup"
-              element={<Register register={handleRegister} fail={fail} onClose={handleClose} isLoading={isLoading}/>}
+              element={<Register register={handleRegister} fail={fail} onClose={handleClose} othersFail={othersFail}
+              isLoading={isLoading}/>}
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

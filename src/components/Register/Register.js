@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 import { useForm } from "../../hooks/useForm";
 
-function Register({ register, fail, onClose, isLoading }) {
+function Register({ register, fail, onClose, isLoading, othersFail }) {
   const { values, handleChange, errors, isValid, resetForm } = useForm();
   function onRegister(e) {
     e.preventDefault();
@@ -19,7 +19,7 @@ function Register({ register, fail, onClose, isLoading }) {
         <div className="register__logo"></div>
       </Link>
       <h1 className="register__header">Добро пожаловать!</h1>
-      <form onSubmit={onRegister} className="register__form">
+      <form onSubmit={onRegister} className="register__form" onChange={onClose}>
         <label className="register__form-name">
           Имя
           <input
@@ -65,7 +65,9 @@ function Register({ register, fail, onClose, isLoading }) {
             value={values.password || ""}
           />
         </label>
-        <span name="password" className={errors.password ? "register__span" : "register__span register__span-hidden"}>{errors.password}</span>
+        <span name="password" className={
+          errors.password||othersFail ? "register__span" : "register__span register__span-hidden"
+          }>{errors.password || (othersFail && 'Что-то пошло не так...')}</span>
         <div className="register__button-container">
           <button
             type="submit"
