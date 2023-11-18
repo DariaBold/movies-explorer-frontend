@@ -3,9 +3,8 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 import { useLocation } from "react-router-dom";
 
-
 function SearchForm({ handleCheckbox, isChecked, search }) {
-  const [filterWords, setFilterWords] = React.useState('');
+  const [filterWords, setFilterWords] = React.useState("");
   const { pathname } = useLocation();
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,11 +13,11 @@ function SearchForm({ handleCheckbox, isChecked, search }) {
   function handleFilter(e) {
     setFilterWords(e.target.value);
   }
-  useEffect(()=>{
+  useEffect(() => {
     if (pathname === "/movies" && localStorage.inputwords) {
       setFilterWords(JSON.parse(localStorage.inputwords));
     }
-  },[pathname])
+  }, [pathname]);
   return (
     <div className="search">
       <form className="search-form" onSubmit={handleSubmit}>
@@ -27,7 +26,7 @@ function SearchForm({ handleCheckbox, isChecked, search }) {
           type="text"
           placeholder="Фильм"
           name="search"
-          value={filterWords ? filterWords : ''}
+          value={filterWords ? filterWords : ""}
           required
           onChange={handleFilter}
         />

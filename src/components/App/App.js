@@ -42,11 +42,10 @@ function App() {
           setSavedMovies(infoMovie.reverse());
           setIsCheck(false);
         })
-        .catch((error) =>{
+        .catch((error) => {
           console.error(`Ошибка получения информации ${error}`);
           localStorage.clear();
-        }
-        );
+        });
     } else {
       setIsCheck(false);
     }
@@ -65,9 +64,9 @@ function App() {
         setFail(true);
         console.error(`Ошибка входа ${err}`);
       })
-      .finally(()=>{
-        setIsLoading(false)
-      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   function handleRegister(name, email, password) {
@@ -75,23 +74,23 @@ function App() {
     api
       .registration(name, email, password)
       .then((data) => {
-        handleLogin(email, password)
+        handleLogin(email, password);
       })
       .catch((err) => {
-        if(err.includes("409")){
+        if (err.includes("409")) {
           setFail(true);
         } else {
-          setOthersFail(true)
+          setOthersFail(true);
         }
         console.error(`Ошибка регистрации ${err}`);
       })
-      .finally(()=>{
-        setIsLoading(false)
-      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
-  function handleClose(){
-    setFail(false)
-    setOthersFail(false)
+  function handleClose() {
+    setFail(false);
+    setOthersFail(false);
   }
   function handleUpdateUser(props) {
     setIsLoading(true);
@@ -101,14 +100,13 @@ function App() {
         setOthersFail(false);
         setCurrentUser(res);
       })
-      .catch((error) =>{
+      .catch((error) => {
         setOthersFail(true);
-        console.error(`Ошибка редактирования профиля ${error}`)
-      }
-      )
-      .finally(()=>{
-        setIsLoading(false)
+        console.error(`Ошибка редактирования профиля ${error}`);
       })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
   function handleOnSignOut() {
     localStorage.removeItem("jwt");
@@ -144,7 +142,7 @@ function App() {
       })
       .catch((error) => console.error(`Ошибка удаления лайка ${error}`));
   }
-  
+
   React.useEffect(() => {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
@@ -217,12 +215,26 @@ function App() {
             />
             <Route
               path="/signin"
-              element={<Login handleLogin={handleLogin} fail={fail} onChangeClose={handleClose} isLoading={isLoading}/>}
+              element={
+                <Login
+                  handleLogin={handleLogin}
+                  fail={fail}
+                  onChangeClose={handleClose}
+                  isLoading={isLoading}
+                />
+              }
             />
             <Route
               path="/signup"
-              element={<Register register={handleRegister} fail={fail} onClose={handleClose} othersFail={othersFail}
-              isLoading={isLoading}/>}
+              element={
+                <Register
+                  register={handleRegister}
+                  fail={fail}
+                  onClose={handleClose}
+                  othersFail={othersFail}
+                  isLoading={isLoading}
+                />
+              }
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -5,28 +5,39 @@ import Header from "../Header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useForm } from "../../hooks/useForm";
 
-function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading, othersFail }) {
+function Profile({
+  loggedIn,
+  width,
+  onUpdateUser,
+  onSignOut,
+  isLoading,
+  othersFail,
+}) {
   const currentUser = React.useContext(CurrentUserContext);
   const { values, handleChange, errors, isValid, resetForm } = useForm();
   const [edit, setEdit] = React.useState(false);
-  const inputChange = (!isValid || (currentUser.name === values.name && currentUser.email === values.email));
+  const inputChange =
+    !isValid ||
+    (currentUser.name === values.name && currentUser.email === values.email);
   const [editFirst, setEditFirst] = React.useState(false);
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser(values);
     setEdit(false);
-    setEditFirst(true)
+    setEditFirst(true);
+    if (othersFail) {
+      values.name = currentUser.name;
+      values.email = currentUser.email;
+    }
   }
   useEffect(() => {
     if (currentUser) {
       resetForm(currentUser, editFirst, {}, false);
     }
   }, [currentUser, editFirst, resetForm]);
-  
+
   function handleEdit(e) {
     setEdit(true);
-    values.name = currentUser.name
-    values.email = currentUser.email
   }
 
   return (
@@ -46,7 +57,7 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading, othersFa
               placeholder="Имя"
               minLength="2"
               maxLength="30"
-              value={values.name || ''}
+              value={values.name || ""}
               onChange={handleChange}
               disabled={!edit ? "disabled" : ""}
             />
@@ -60,18 +71,20 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading, othersFa
               name="email"
               type="email"
               placeholder="Email"
-              value={values.email || ''}
+              value={values.email || ""}
               onChange={handleChange}
               disabled={!edit || isLoading ? "disabled" : ""}
             />
           </label>
-          <span 
+          <span
             className={`profile__edit-error profile__error ${
               edit ? "profile__error-hidden" : ""
-            } ${ othersFail ? "" : "profile__error-no"
-            }`}>
-            {(othersFail && 'Ошибка редактирования') || (editFirst && 'Данные сохранены') || ''}
-            </span>
+            } ${othersFail ? "" : "profile__error-no"}`}
+          >
+            {(othersFail && "Ошибка редактирования") ||
+              (editFirst && "Данные сохранены") ||
+              ""}
+          </span>
           {!edit ? (
             <>
               <button

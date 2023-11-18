@@ -7,7 +7,6 @@ import "./SavedMovies.css";
 import Preloader from "../Preloader/Preloader";
 
 function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
-  
   const [filterMovies, setFilterMovies] = React.useState(savedMovies);
   const [inputSearch, setInputSearch] = React.useState("");
   const [isChecked, setIsChecked] = React.useState(false);
@@ -38,14 +37,14 @@ function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
   function search(inputWords) {
     filterMoviesByWord(savedMovies, inputWords, isChecked);
   }
-  useEffect(()=>{
-    if(savedMovies.length !== 0){
-      setIsLoading(true)
+  useEffect(() => {
+    if (savedMovies.length !== 0) {
+      setIsLoading(true);
       setFilterMovies(savedMovies);
     }
-    setIsLoading(false)
+    setIsLoading(false);
     filterMoviesByWord(savedMovies, inputSearch, isChecked);
-  },[inputSearch, isChecked, savedMovies])
+  }, [inputSearch, isChecked, savedMovies]);
   return (
     <main>
       {isLoading ? (
