@@ -98,10 +98,13 @@ function App() {
     api
       .setUserInfo(props, localStorage.getItem("jwt"))
       .then((res) => {
+        setOthersFail(false);
         setCurrentUser(res);
       })
-      .catch((error) =>
+      .catch((error) =>{
+        setOthersFail(true);
         console.error(`Ошибка редактирования профиля ${error}`)
+      }
       )
       .finally(()=>{
         setIsLoading(false)
@@ -208,6 +211,7 @@ function App() {
                   onUpdateUser={handleUpdateUser}
                   onSignOut={handleOnSignOut}
                   isLoading={isLoading}
+                  othersFail={othersFail}
                 />
               }
             />

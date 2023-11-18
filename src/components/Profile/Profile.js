@@ -1,57 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
 import Header from "../Header/Header";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { regexpProfile } from "../../utils/constants";
+import { useForm } from "../../hooks/useForm";
 
-function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading }) {
+function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading, othersFail }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [isValidName, setIsValidName] = React.useState(true);
-  const [isValidEmail, setIsValidEmail] = React.useState(true);
+  const { values, handleChange, errors, isValid, resetForm } = useForm();
   const [edit, setEdit] = React.useState(false);
-  const [errorEmail, setErrorEmail] = React.useState("");
-  const [errorName, setErrorName] = React.useState("");
-
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
-    
-    if (regexpProfile.test(e.target.value)) {
-      setIsValidEmail(true);
-      setErrorEmail("");
-    } else {
-      setIsValidEmail(false);
-      setErrorEmail("невалидный email");
-    }
-  }
-  function handleChangeName(e) {
-    setName(e.target.value);
-    if (e.target.value.length >= 2 && e.target.value.length <= 30) {
-      setIsValidName(true);
-      setErrorName("");
-    } else {
-      setIsValidName(false);
-      setErrorName("имя меньше 2 знаков");
-    }
-  }
-  function handleEdit(e) {
-    setEdit(true);
-  }
-
+  const inputChange = (!isValid || (currentUser.name === values.name && currentUser.email === values.email));
+  const [editFirst, setEditFirst] = React.useState(false);
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateUser({
-      name,
-      email,
-    });
+    onUpdateUser(values);
     setEdit(false);
+    setEditFirst(true)
   }
-  React.useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
-  }, [currentUser]);
+  useEffect(() => {
+    if (currentUser) {
+      resetForm(currentUser, editFirst, {}, false);
+    }
+  }, [currentUser, editFirst, resetForm]);
+  
+  function handleEdit(e) {
+    setEdit(true);
+    values.name = currentUser.name
+    values.email = currentUser.email
+  }
+
   return (
     <main>
       <Header loggedIn={loggedIn} widthWindow={width} />
@@ -69,8 +46,8 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading }) {
               placeholder="Имя"
               minLength="2"
               maxLength="30"
-              value={name}
-              onChange={handleChangeName}
+              value={values.name || ''}
+              onChange={handleChange}
               disabled={!edit ? "disabled" : ""}
             />
           </label>
@@ -83,11 +60,18 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading }) {
               name="email"
               type="email"
               placeholder="Email"
-              value={email}
-              onChange={handleChangeEmail}
+              value={values.email || ''}
+              onChange={handleChange}
               disabled={!edit || isLoading ? "disabled" : ""}
             />
           </label>
+          <span 
+            className={`profile__edit-error profile__error ${
+              edit ? "profile__error-hidden" : ""
+            } ${ othersFail ? "" : "profile__error-no"
+            }`}>
+            {(othersFail && 'Ошибка редактирования') || (editFirst && 'Данные сохранены') || ''}
+            </span>
           {!edit ? (
             <>
               <button
@@ -105,14 +89,14 @@ function Profile({ loggedIn, width, onUpdateUser, onSignOut, isLoading }) {
           ) : (
             <>
               <span className="profile__edit-error">
-                {errorEmail || errorName}
+                {errors.name || errors.email}
               </span>
               <button
                 type="submit"
                 className={`profile__edit ${
-                  !(isValidEmail && isValidName) ? "profile__edit_disabled" : ""
+                  inputChange ? "profile__edit_disabled" : ""
                 }`}
-                disabled={`${!(isValidEmail && isValidName) || isLoading ? "disabled" : ""}`}
+                disabled={`${inputChange || isLoading ? "disabled" : ""}`}
               >
                 Сохранить
               </button>

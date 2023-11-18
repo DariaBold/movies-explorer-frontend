@@ -1,4 +1,4 @@
-import { date } from "../../utils/constants";
+import { DATE } from "../../utils/constants";
 import "./Footer.css";
 
 function Footer() {
@@ -8,7 +8,7 @@ function Footer() {
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
       <div className="footer__info">
-        <p className="footer__copyright">© {date}</p>
+        <p className="footer__copyright">© {DATE}</p>
         <nav className="footer__links">
           <ul className="footer__links-nav">
             <li className="footer__link-yandex">

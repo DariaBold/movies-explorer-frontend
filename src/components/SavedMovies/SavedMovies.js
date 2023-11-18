@@ -38,17 +38,14 @@ function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
   function search(inputWords) {
     filterMoviesByWord(savedMovies, inputWords, isChecked);
   }
-  function handleDeleteMovie(id) {
-    onCardDelete(id);
-    setFilterMovies(moviesData => moviesData.filter(movieData => movieData._id !== id))
-  }
   useEffect(()=>{
     if(savedMovies.length !== 0){
       setIsLoading(true)
       setFilterMovies(savedMovies);
     }
     setIsLoading(false)
-  },[savedMovies])
+    filterMoviesByWord(savedMovies, inputSearch, isChecked);
+  },[inputSearch, isChecked, savedMovies])
   return (
     <main>
       {isLoading ? (
@@ -68,7 +65,7 @@ function SavedMovies({ width, loggedIn, savedMovies, onCardDelete }) {
                   <MoviesCard
                     key={info._id}
                     onSaved={true}
-                    onCardDelete={handleDeleteMovie}
+                    onCardDelete={onCardDelete}
                     saved={savedMovies}
                     info={info}
                   />
