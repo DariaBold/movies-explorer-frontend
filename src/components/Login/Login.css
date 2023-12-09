@@ -78,7 +78,16 @@
     font-weight: 400;
     padding: 15px;
     border-radius: 8px;
-    margin: 10px 0 20px;
+    margin: 10px 0 8px;
+}
+.login__span{
+    color: rgb(241, 54, 54);
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 9px;
+    height: 12px;
+}
+.login__span-hidden{
+    visibility: hidden;
 }
 .login__input:focus{    
     outline: 1px solid #666;
@@ -122,6 +131,9 @@
     background-color: #4285F4;
     border: none;
     color: white;
+}
+.login__link_disabled{
+    background-color: #8B8B8B;
 }
 .login__link:hover{
     opacity: 0.8;

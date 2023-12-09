@@ -1,41 +1,89 @@
-import MoviesCard from '../MoviesCard/MoviesCard';
-import './MoviesCardList.css';
-import worlds from "../../images/33__words.png"
-import photo from "../../images/photo.png"
-import gitar from "../../images/gitar.png"
-import pillars from "../../images/pillars.png"
-import road from "../../images/road.png"
-import home from "../../images/home.png"
-import german from "../../images/german.png"
-import graffite from "../../images/graffite.png"
-import sport from "../../images/sport.png"
-import party from "../../images/party.png"
-import smoke from "../../images/smoke.png"
-import computer from "../../images/computer.png"
+import React, { useEffect } from "react";
+import MoviesCard from "../MoviesCard/MoviesCard";
+import "./MoviesCardList.css";
+import "../SavedMovies/SavedMovies.css";
 
-function MoviesCardList(){
-    return (
+function MoviesCardList({ movies, saved, onCardLike, onCardDelete }) {
+  const [isOpenMovies, setIsOpenMovies] = React.useState(0);
+  const [savedMoviesData, setSavedMoviesData] = React.useState(movies);
+  const [count, setCount] = React.useState(() => {});
+  useEffect(() => {
+    if((movies.length > 0) && (savedMoviesData.length === 0)){
+      setSavedMoviesData(movies);
+    }
+  }, [movies, savedMoviesData.length]);
+  function firstCount() {
+    if (window.innerWidth > 1137) {
+      setIsOpenMovies(3);
+      setCount(12);
+    } else if (window.innerWidth < 1138 && 713 < window.innerWidth) {
+      setIsOpenMovies(2);
+      setCount(8);
+    } else if (window.innerWidth < 713) {
+      setIsOpenMovies(2);
+      setCount(5);
+    }
+  }
+  function handleDeleteMovie(id) {
+    onCardDelete(id);
+    setSavedMoviesData(moviesData => moviesData.filter(movieData => movieData.id !== id))
+  }
+  function handleClickMore() {
+    if (window.innerWidth > 1137) {
+      setCount(count + isOpenMovies);
+    } else if (window.innerWidth < 1138 && 713 < window.innerWidth) {
+      setCount(count + isOpenMovies);
+    } else if (window.innerWidth < 713) {
+      setCount(count + isOpenMovies);
+    }
+  }
+  useEffect(() => {
+    setTimeout(() => {
+    firstCount();
+    },500)
+  }, [window.innerWidth]);
+  useEffect(() => {
+    window.addEventListener("resize", handleClickMore);
+    return () => window.removeEventListener("resize", handleClickMore);
+  });
+
+  return (
     <section className="elements">
-        <ul className="elements__films">
-        <MoviesCard src={worlds} title={"33 слова о дизайне"} saved={true}/>
-        <MoviesCard src={photo} title={"Киноальманах «100 лет дизайна»"} saved={true}/>
-        <MoviesCard src={gitar} title={"В погоне за Бенкси"} saved={true}/>
-        <MoviesCard src={pillars} title={"Баския: Взрыв реальности"} saved={true}/>
-        <MoviesCard src={road} title={"Бег это свобода"} saved={false}/>
-        <MoviesCard src={home} title={"Книготорговцы"} saved={false}/>
-        <MoviesCard src={german} title={"Когда я думаю о Германии ночью"} saved={false}/>
-        <MoviesCard src={graffite} title={"Gimme Danger: История Игги и The Stooges"} saved={true}/>
-        <MoviesCard src={sport} title={"Дженис: Маленькая девочка грустит"} saved={true}/>
-        <MoviesCard src={party} title={"Соберись перед прыжком"} saved={true}/>
-        <MoviesCard src={smoke} title={"Пи Джей Харви: A dog called money"} saved={true}/>
-        <MoviesCard src={computer} title={"По волнам: Искусство звука в кино"} saved={true}/>
-        </ul>
-        <button
-          className="elements__more"
-          type="button"
-          name="more"
-          aria-label="Еще"
-        >Еще</button>
+      {movies.length === 0 ? (
+        <p type="text" className="elements__films-no">
+          Ничего не найдено
+        </p>
+      ) : (
+        <>
+          <ul className="elements__films">
+            {movies.slice(0, count).map((info) => {
+              return (
+                <MoviesCard
+                  key={info.id}
+                  saved={saved}
+                  onCardLike={onCardLike}
+                  onCardDelete={handleDeleteMovie}
+                  info={info}
+                />
+              );
+            })}
+          </ul>
+          <button
+            className={`${
+              movies.length <= count
+                ? "elements__more-hidden elements__more"
+                : "elements__more"
+            }`}
+            type="button"
+            name="more"
+            aria-label="Еще"
+            onClick={handleClickMore}
+          >
+            Еще
+          </button>
+        </>
+      )}
     </section>
-)}
+  );
+}
 export default MoviesCardList;

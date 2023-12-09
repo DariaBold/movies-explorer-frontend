@@ -1,34 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import './Login.css';
+import "./Login.css";
+import { useForm } from "../../hooks/useForm";
 
-
-function Login({ handleLogin }) {
-    const [formValue, setFormValue] = React.useState({
-      email: "",
-      password: "",
-    });
-    function onLogin(e) {
-      e.preventDefault();
-      if (!formValue.email || !formValue.password) {
-        return;
-      }
-      handleLogin(formValue.email, formValue.password);
-    }
-  
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormValue({
-        ...formValue,
-        [name]: value,
-      });
-    };
-    return (
-      <main className="login">
-        <Link to="/"><div className="login__logo"></div></Link>
-        <h1 className="login__header">Рады видеть!</h1>
-        <form onSubmit={onLogin} className="login__form">
-        <label className="login__form-name">E-mail
+function Login({ handleLogin, fail, onChangeClose, isLoading }) {
+  const { values, handleChange, errors, isValid, resetForm } = useForm();
+  function onLogin(e) {
+    e.preventDefault();
+    handleLogin(values.email, values.password);
+  }
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
+  return (
+    <main className="login">
+      <Link to="/">
+        <div className="login__logo"></div>
+      </Link>
+      <h1 className="login__header">Рады видеть!</h1>
+      <form onSubmit={onLogin} className="login__form" onChange={onChangeClose}>
+        <label className="login__form-name">
+          E-mail
           <input
             required
             className="login__input"
@@ -37,10 +29,12 @@ function Login({ handleLogin }) {
             type="text"
             placeholder="Email"
             onChange={handleChange}
-            value={formValue.email}
+            value={values.email || ""}
           />
-          </label>
-        <label className="login__form-name">Пароль
+        </label>
+        <span name="email" className={errors.email ? "login__span" : "login__span login__span-hidden"}>{errors.email}</span>
+        <label className="login__form-name">
+          Пароль
           <input
             required
             id="password"
@@ -51,26 +45,34 @@ function Login({ handleLogin }) {
             maxLength="30"
             placeholder="Пароль"
             onChange={handleChange}
-            value={formValue.password}
+            value={values.password || ""}
           />
-          </label>
-          <div className="login__button-container">
-          <button type="submit" className="login__link">
+        </label>
+        <span name="password" 
+        className={errors.password ? "login__span" : "login__span login__span-hidden"}>
+          {errors.password || (fail && 'Что-то пошло не так...')}
+          </span>
+        <div className="login__button-container">
+          <button
+            type="submit"
+            className={`login__link ${!isValid && "login__link_disabled"}`}
+            disabled={isLoading ? "disabled" : ""}
+          >
             Войти
           </button>
         </div>
-          <div className="login__signup-container">
+        <div className="login__signup-container">
           <p className="login__signup-button">
-          Ещё не зарегистрированы?
-            <Link to="/signup"  className="login__signup">
+            Ещё не зарегистрированы?
+            <Link to="/signup" className="login__signup">
               {" "}
               Регистрация
             </Link>
           </p>
         </div>
-        </form>
-      </main>
-    );
-  }
+      </form>
+    </main>
+  );
+}
 
 export default Login;

@@ -79,7 +79,82 @@
     font-weight: 400;
     padding: 15px;
     border-radius: 8px;
-    margin: 10px 0 20px;
+    margin: 10px 0 8px;
+}
+.register__span{
+    color: rgb(241, 54, 54);
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 9px;
+    height: 12px;
+}
+.register__fail{
+    font-family: "Inter", "Arial", sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    max-width: 300px;
+    color: white;
+    align-self: center;
+    background-color: #303030;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.register__close{
+    background-image: url(../../images/CloseIcon.svg);
+    max-width: 32px;
+    width: 100%;
+    max-height: 32px;
+    height: 100%;
+    background-color: rgb(0,0,0,0.0);
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    max-width: 300px;
+    background-repeat: no-repeat;
+    background-position: right;
+    margin-right: -40px;
+}
+.register__close:hover{
+    opacity: 0.7;
+}
+@media screen and (max-width: 1280px) {
+    .register__close {
+        margin-right: calc(0px + (-40 - 0) * ((100vw - 320px) / (1280 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .register__close {
+        margin-right:0;
+    }
+}
+.register__container{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    background-color: rgb(0,0,0,0.2);
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+}
+@media screen and (max-width: 500px) {
+    .register__span {
+        font-size: calc(7px + (9 - 7) * ((100vw - 320px) / (500 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .register__span {
+        font-size: 7px;
+    }
+}
+
+.register__span-hidden{
+    visibility: hidden;
 }
 .register__input:focus{    
     outline: 1px solid #666;
@@ -122,6 +197,9 @@
     background-color: #4285F4;
     border: none;
     color: white;
+}
+.register__link_disabled{
+    background-color: #8B8B8B;
 }
 .register__link:hover{
     opacity: 0.8;

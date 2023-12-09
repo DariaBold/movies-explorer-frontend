@@ -7,7 +7,12 @@
     .elements__card {
         max-width: calc(339px + (360 - 339) * ((100vw - 768px) / (1280 - 768)));
     }
-} 
+}
+.elements__trailerLink{
+    height: 201px;
+    grid-row: 1/-1;
+    grid-column: 1/-1;
+}
 .elements__image{
     height: 201px;
     object-fit: cover;
@@ -16,17 +21,17 @@
     width: 100%;
 }
 @media screen and (max-width: 1280px) {
-    .elements__image {
+    .elements__trailerLink {
         height: calc(190px + (201 - 190) * ((100vw - 768px) / (1280 - 768)));
     }
 }
 @media screen and (max-width: 768px) {
-    .elements__image {
+    .elements__trailerLink {
         height: calc(168px + (190 - 168) * ((100vw - 320px) / (768 - 320)));
     }
 }
 @media screen and (max-width: 320px) {
-    .elements__image {
+    .elements__trailerLink {
         height: 168px;
     }
 }
@@ -47,7 +52,7 @@
     color: white;
     border-radius: 30px;
     height: 21px;
-    display: none;
+    display: none; 
 }
 @media screen and (max-width: 320px) {
     .elements__save{
@@ -65,6 +70,7 @@
     width: 21px;
     background-image: url("../../images/save3.svg");
     border-radius: 100%;
+    cursor: pointer;
 }
 .elements__onSaved{
     background-image: url("../../images/d3.svg");
@@ -79,12 +85,19 @@
 .elements__onSaved:hover{
     display: block;
 }
-.elements__image:hover
+.elements__trailerLink:hover
 + .elements__save{
+    display: block;
+}
+.elements__trailerLink:hover
++ .elements__onSaved{
     display: block;
 }
 .elements__image:hover 
 + .elements__onSaved{
+    display: block;
+}
+.elements__save:hover{
     display: block;
 }
 .elements__image:hover{
@@ -155,4 +168,14 @@
     .elements__counter {
         margin-bottom: 36px;
     }
-} 
+}
+@media screen and (max-width: 694px) {
+    .elements__image {
+    height: calc(168px + (201 - 168) * ((100vw - 320px) / (694 - 320)));
+    }
+}
+@media screen and (max-width: 320px) {
+    .elements__image {
+    height: 168px;
+    }
+}
